@@ -1,6 +1,8 @@
 # Tino Muzambi
 import sys
 import math
+from random import randint
+from random import seed
 
 
 def get_bins_alt(full_amount, no_bins):
@@ -36,6 +38,21 @@ def get_bins_alt2(full_amount, no_bins):
     return bins
 
 
+def get_bins_alt3(full_amount, no_bins):
+    bins = []
+
+    seed(1)
+    randoms = []
+
+    for i in range(no_bins):
+        randoms.append(randint(0, 100))
+    tot_rand = sum(randoms)
+    for i in range(no_bins):
+        bins.append((randoms[i] / tot_rand) * full_amount)
+
+    return sorted(bins)
+
+
 def get_bins(full_amount, no_bins):
     bins = []
     first_ratio = math.ceil(no_bins / 2) # TODO set this dynamically.
@@ -48,7 +65,7 @@ def get_bins(full_amount, no_bins):
 def main():
     full_amount = int(sys.argv[1])
     num_bins = int(sys.argv[2])
-    out_bins = get_bins_alt2(full_amount, num_bins)
+    out_bins = get_bins_alt3(full_amount, num_bins)
     print(out_bins)
     print(sum(out_bins))
 
