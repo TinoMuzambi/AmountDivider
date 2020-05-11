@@ -1,10 +1,44 @@
 # Tino Muzambi
 import sys
+import math
+
+
+def get_bins_alt(full_amount, no_bins):
+    bins = []
+
+    sub_amount = 0
+    if full_amount % no_bins == 0:
+        for i in range(no_bins):
+            bins.append(full_amount / no_bins)
+        for i in range(no_bins - 1, 0, -1):
+            sub_amount = 0.75 * bins[i]
+            bins[i] -= sub_amount
+            bins[i - 1] += sub_amount
+
+    bins[0] -= sub_amount
+    return bins
+
+
+def get_bins_alt2(full_amount, no_bins):
+    bins = []
+
+    sub_amount = 0
+    if full_amount % no_bins == 0:
+        for i in range(no_bins):
+            bins.append(full_amount / no_bins)
+        for i in range(no_bins - 1, 0, -1):
+            sub_amount = 0.75 * bins[i]
+            bins[i] -= sub_amount
+            for j in range(i):
+                bins[j] += sub_amount * (1 / i)
+
+    bins[0] -= sub_amount
+    return bins
 
 
 def get_bins(full_amount, no_bins):
     bins = []
-    first_ratio = no_bins - 2 # TODO set this dynamically.
+    first_ratio = math.ceil(no_bins / 2) # TODO set this dynamically.
     for i in range(no_bins):
         bins.append(full_amount * (first_ratio / 10))
         first_ratio -= no_bins / 10
@@ -14,7 +48,9 @@ def get_bins(full_amount, no_bins):
 def main():
     full_amount = int(sys.argv[1])
     num_bins = int(sys.argv[2])
-    print(get_bins(full_amount, num_bins))
+    out_bins = get_bins_alt2(full_amount, num_bins)
+    print(out_bins)
+    print(sum(out_bins))
 
 
 if __name__ == '__main__':
