@@ -53,6 +53,22 @@ def get_bins_alt3(full_amount, no_bins):
     return sorted(bins)
 
 
+def get_bins_alt4(full_amount, no_bins):
+    bins = []
+
+    for i in range(no_bins):
+        bins.append(full_amount / no_bins)
+    for i in range(no_bins):
+        cum_sum = 0
+        for j in range(i, no_bins):
+            sub_amount = 0.1 * bins[j]
+            cum_sum += sub_amount
+            bins[j] -= sub_amount
+        bins[i] += cum_sum
+
+    return bins
+
+
 def get_bins(full_amount, no_bins):
     bins = []
     first_ratio = math.ceil(no_bins / 2) # TODO set this dynamically.
@@ -65,7 +81,7 @@ def get_bins(full_amount, no_bins):
 def main():
     full_amount = int(sys.argv[1])
     num_bins = int(sys.argv[2])
-    out_bins = get_bins_alt3(full_amount, num_bins)
+    out_bins = get_bins_alt4(full_amount, num_bins)
     print(out_bins)
     print(sum(out_bins))
 
