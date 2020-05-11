@@ -71,7 +71,7 @@ def get_bins_alt4(full_amount, no_bins):
 
 def get_bins(full_amount, no_bins):
     bins = []
-    first_ratio = math.ceil(no_bins / 2) # TODO set this dynamically.
+    first_ratio = math.ceil(no_bins / 2)
     for i in range(no_bins):
         bins.append(full_amount * (first_ratio / 10))
         first_ratio -= no_bins / 10
