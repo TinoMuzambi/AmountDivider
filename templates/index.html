@@ -1,28 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <title>Amount Divider</title>
-</head>
-<body>
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--&lt;!&ndash;    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">&ndash;&gt;-->
+<!--    <title>Amount Divider</title>-->
+<!--</head>-->
+<!--<body>-->
+<form method=post action="">
+<table>
+  {% for field in form %}
+    <tr>
+    <td>{{ field.name }}</td><td>{{ field }}</td>
+    <td>{{ field.label }}</td>
+    </tr>
+  {% endfor %}
+</table>
+<p><input type=submit value=Compute></form></p>
 
-<form class="amount-container" method="POST">
-    <input class="amount-input" name="text" placeholder="Enter the amount to be divided">
-</form>
-
-<form class="partitions-container" action="/divide" method="POST">
-    <input class="partitions-input" name="text" placeholder="Enter the number of divisions you want">
-    <input class="partitions-btn" type="submit" value="Divide">
-</form>
-
-<br><br>
-
-<form class="output-container" action="/calc" method="POST">
-    <textarea class="output">
-        Output
+<p>
+    {% if result != None %}
+    <textarea>
+        {{ result }}
     </textarea>
-</form>
+    {% endif %}
+</p>
 
-</body>
-</html>
+<!--</body>-->
+<!--</html>-->

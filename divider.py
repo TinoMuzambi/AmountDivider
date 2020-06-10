@@ -4,14 +4,29 @@ import math
 from random import randint
 from random import seed
 from flask import Flask, request, render_template
+from wtforms import Form, FloatField, validators, IntegerField
+
+class InputForm(Form):
+    amount = FloatField(
+        label="amount to divide up", default=1000.0,
+        validators=[validators.InputRequired()])
+    partitions = IntegerField(
+        label="number of partitions", default=5,
+        validators=[validators.InputRequired()])
 
 
 app = Flask(__name__)
 
 
-@app.route("/")
+@app.route("/", methods=['GET', 'POST'])
 def index():
-    return render_template('index.html')
+    form = InputForm(request.form)
+    if request.method == 'POST' and form.validate():
+        result = get_bins_alt3(form.amount.data, form.partitions.data)
+    else:
+        result = None
+
+    return render_template('index.html', form=form, result=result)
 
 
 def get_bins_alt(full_amount, no_bins):
@@ -64,8 +79,8 @@ def get_bins_alt3(full_amount, no_bins):
 
 @app.route("/divide", methods=['POST'])
 def get_bins_alt4():
-    full_amount = eval(request.form['text'])
-    no_bins = eval(request.form['text'])
+    full_amount = eval(request.form['amount'])
+    no_bins = eval(request.form['partitions'])
     bins = []
 
     for i in range(no_bins):
@@ -79,6 +94,7 @@ def get_bins_alt4():
         bins[i] += cum_sum
 
     print(bins)
+    return index()
 
 
 def get_bins(full_amount, no_bins):
