@@ -3,6 +3,15 @@ import sys
 import math
 from random import randint
 from random import seed
+from flask import Flask, request, render_template
+
+
+app = Flask(__name__)
+
+
+@app.route("/")
+def index():
+    return render_template('index.html')
 
 
 def get_bins_alt(full_amount, no_bins):
@@ -53,7 +62,10 @@ def get_bins_alt3(full_amount, no_bins):
     return sorted(bins)
 
 
-def get_bins_alt4(full_amount, no_bins):
+@app.route("/divide", methods=['POST'])
+def get_bins_alt4():
+    full_amount = eval(request.form['text'])
+    no_bins = eval(request.form['text'])
     bins = []
 
     for i in range(no_bins):
@@ -66,7 +78,7 @@ def get_bins_alt4(full_amount, no_bins):
             bins[j] -= sub_amount
         bins[i] += cum_sum
 
-    return bins
+    print(bins)
 
 
 def get_bins(full_amount, no_bins):
@@ -87,4 +99,4 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    app.run(debug=True)
