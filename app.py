@@ -13,7 +13,7 @@ def check_positive(form, field):
     """Form validation: failure if variables negative"""
     amount = form.amount.data
     partitions = field.data
-    if partitions is not None:
+    if partitions is not None and amount is not None:
         if amount < 0 or partitions < 0:
             raise validators.ValidationError(
                 'Values have to be positive.'
