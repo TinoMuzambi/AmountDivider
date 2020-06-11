@@ -8,22 +8,25 @@ body {
 .form-holder {
     position: fixed;
     top: 1%;
-    padding-left: 10px;
-    width: 100%;
+    left: 10%;
+    width: 80%;
 }
 .form-holder h1 {
     text-align: center;
 }
-.container {
-    margin: 10px;
+.form-holder .contents-center {
+    width: 100%;
+    margin-left: 33.3%;
+}
+.form-holder .form-container {
     background: transparent;
 }
-.lab {
-    margin: 10px;
+.form-holder .form-container .elements {
+    background: transparent;
 }
-
-.output-container .output-field {
-    margin-left: 10px;
+.form-holder .output-container .output-field {
+    background: transparent;
+    border: none;
     width: 50%;
-    height: 10%;
+    height: 300px;
 }

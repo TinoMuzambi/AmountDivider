@@ -90,7 +90,10 @@ def get_bins_alt4(full_amount, no_bins):
             bins[j] -= sub_amount
         bins[i] += cum_sum
 
-    return sorted(bins)
+    out = ""
+    for i in range(len(bins)):
+        out += "Partition " + str(i + 1) + " - " + "{:.2f}\n".format(bins[i])
+    return out
 
 
 def get_bins(full_amount, no_bins):
