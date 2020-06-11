@@ -14,6 +14,9 @@ body {
 .form-holder h1 {
     text-align: center;
 }
+.form-holder p {
+    font-size: 30px;
+}
 .form-holder .contents-center {
     width: 100%;
     margin-left: 33.3%;
@@ -24,9 +27,25 @@ body {
 .form-holder .form-container .elements {
     background: transparent;
 }
+.form-holder .btn {
+    background: transparent;
+    border: solid 2px;
+    border-radius: 0%;
+    left: 40px;
+    width: 100px;
+}
+.form-holder .btn:hover {
+    cursor: pointer;
+    opacity: 50%;
+}
 .form-holder .output-container .output-field {
     background: transparent;
+    font-size: 20px;
     border: none;
     width: 50%;
     height: 300px;
+}
+.form-holder .output-container .output-field:focus {
+    border: none;
+    outline: none;
 }
