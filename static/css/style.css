@@ -1,24 +1,29 @@
-body
-{
+body {
     margin: 0;
     padding: 0;
     width: 100%;
-    font-family: sans-serif;
-    background-color: darkgreen;
+    font-family: "Verdana";
+    background: url("../background.jpg");
 }
-.amount-container {
+.form-holder {
+    position: fixed;
+    top: 1%;
+    padding-left: 10px;
+    width: 100%;
+}
+.form-holder h1 {
+    text-align: center;
+}
+.container {
+    margin: 10px;
+    background: transparent;
+}
+.lab {
     margin: 10px;
 }
-.amount-container .amount-input {
-    width: 30%;
-}
-.partitions-container {
-    margin: 10px;
-}
-.partitions-container .partitions-input {
-    width: 30%;
-}
+
 .output-container .output-field {
+    margin-left: 10px;
     width: 50%;
     height: 10%;
 }

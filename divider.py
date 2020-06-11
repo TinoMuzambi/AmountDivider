@@ -8,10 +8,10 @@ from wtforms import Form, FloatField, validators, IntegerField
 
 class InputForm(Form):
     amount = FloatField(
-        label="amount to divide up", default=1000.0,
+        label="amount to divide up",
         validators=[validators.InputRequired()])
     partitions = IntegerField(
-        label="number of partitions", default=5,
+        label="number of partitions",
         validators=[validators.InputRequired()])
 
 
@@ -22,7 +22,7 @@ app = Flask(__name__)
 def index():
     form = InputForm(request.form)
     if request.method == 'POST' and form.validate():
-        result = get_bins_alt3(form.amount.data, form.partitions.data)
+        result = get_bins_alt4(form.amount.data, form.partitions.data)
     else:
         result = None
 
@@ -77,10 +77,7 @@ def get_bins_alt3(full_amount, no_bins):
     return sorted(bins)
 
 
-@app.route("/divide", methods=['POST'])
-def get_bins_alt4():
-    full_amount = eval(request.form['amount'])
-    no_bins = eval(request.form['partitions'])
+def get_bins_alt4(full_amount, no_bins):
     bins = []
 
     for i in range(no_bins):
@@ -93,8 +90,7 @@ def get_bins_alt4():
             bins[j] -= sub_amount
         bins[i] += cum_sum
 
-    print(bins)
-    return index()
+    return sorted(bins)
 
 
 def get_bins(full_amount, no_bins):

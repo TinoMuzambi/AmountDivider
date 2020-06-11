@@ -1,29 +1,33 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--&lt;!&ndash;    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">&ndash;&gt;-->
-<!--    <title>Amount Divider</title>-->
-<!--</head>-->
-<!--<body>-->
-<form method=post action="">
-<table>
-  {% for field in form %}
-    <tr>
-    <td>{{ field.name }}</td><td>{{ field }}</td>
-    <td>{{ field.label }}</td>
-    </tr>
-  {% endfor %}
-</table>
-<p><input type=submit value=Compute></form></p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Amount Divider</title>
+</head>
+<body>
+    <div class="form-holder">
+        <h1>Amount Divider</h1>
+        <form method=post action="">
+            <table class="elements">
+              {% for field in form %}
+                <tr>
+                <td class="lab">{{ field.name }}</td><td class="container">{{ field }}</td>
+                <td class="lab">{{ field.label }}</td>
+                </tr>
+              {% endfor %}
+            </table>
 
-<p>
-    {% if result != None %}
-    <textarea>
-        {{ result }}
-    </textarea>
-    {% endif %}
-</p>
+        <p><input type=submit value=Divide></form></p>
 
-<!--</body>-->
-<!--</html>-->
+        <p class="output-container">
+            {% if result != None %}
+            <textarea class="output-field">
+                {{ result }}
+            </textarea>
+            {% endif %}
+        </p>
+    </div>
+
+</body>
+</html>
