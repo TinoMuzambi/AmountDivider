@@ -6,6 +6,7 @@ from random import seed
 from flask import Flask, request, render_template
 from wtforms import Form, FloatField, validators, IntegerField
 
+
 class InputForm(Form):
     amount = FloatField(
         label="amount to divide up",

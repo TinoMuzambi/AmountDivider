@@ -1,0 +1,6 @@
+Flask~=1.1.1
+gunicorn
+Jinja2
+requests
+Werkzeug
+wtforms~=2.3.1
