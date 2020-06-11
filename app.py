@@ -9,13 +9,34 @@ from wtforms import Form, FloatField, validators, IntegerField
 app = Flask(__name__)
 
 
+def check_positive(form, field):
+    """Form validation: failure if variables negative"""
+    amount = form.amount.data
+    partitions = field.data
+    if partitions is not None:
+        if amount < 0 or partitions < 0:
+            raise validators.ValidationError(
+                'Values have to be positive.'
+            )
+
+
+def check_zero(form, field):
+    """Form validation: failure if partition variable is zero for division by zero"""
+    partitions = form.partitions.data
+    if partitions == 0:
+        raise validators.ValidationError(
+            'Number of partitions can\'t be zero please.'
+        )
+
+
 class InputForm(Form):
     amount = FloatField(
         label="amount to divide up",
-        validators=[validators.InputRequired()])
+        validators=[validators.InputRequired(), check_positive])
     partitions = IntegerField(
         label="number of partitions",
-        validators=[validators.InputRequired()])
+        validators=[validators.InputRequired(), check_positive, check_zero])
+
 
 
 @app.route("/", methods=['GET', 'POST'])
