@@ -1,10 +1,12 @@
 # Tino Muzambi
-import sys
 import math
 from random import randint
 from random import seed
+
 from flask import Flask, request, render_template
 from wtforms import Form, FloatField, validators, IntegerField
+
+app = Flask(__name__)
 
 
 class InputForm(Form):
@@ -14,9 +16,6 @@ class InputForm(Form):
     partitions = IntegerField(
         label="number of partitions",
         validators=[validators.InputRequired()])
-
-
-app = Flask(__name__)
 
 
 @app.route("/", methods=['GET', 'POST'])
@@ -104,14 +103,6 @@ def get_bins(full_amount, no_bins):
         bins.append(full_amount * (first_ratio / 10))
         first_ratio -= no_bins / 10
     return bins
-
-
-def main():
-    full_amount = int(sys.argv[1])
-    num_bins = int(sys.argv[2])
-    out_bins = get_bins_alt4(full_amount, num_bins)
-    print(out_bins)
-    print(sum(out_bins))
 
 
 if __name__ == '__main__':

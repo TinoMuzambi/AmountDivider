@@ -27,6 +27,10 @@ body {
 .form-holder .form-container .elements {
     background: transparent;
 }
+.form-holder .errors {
+    color: red;
+    list-style: none;
+}
 .form-holder .btn {
     background: transparent;
     border: solid 2px;
@@ -42,8 +46,9 @@ body {
     background: transparent;
     font-size: 20px;
     border: none;
-    width: 50%;
+    width: 30%;
     height: 300px;
+    resize: none;
 }
 .form-holder .output-container .output-field:focus {
     border: none;
