@@ -15,7 +15,7 @@
         gtag('config', 'UA-141921777-1');
     </script>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.7" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <title>Amount Divider</title>
@@ -34,7 +34,6 @@
             <tr>
                 <td class="lab">{{ field.name }}</td>
                 <td>{{ field }}</td>
-                <td class="lab">{{ field.label }}</td>
                 <td>
                     <ul class="errors">
                         {% for error in field.errors %}

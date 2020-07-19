@@ -31,10 +31,8 @@ def check_zero(form, field):
 
 class InputForm(Form):
     amount = FloatField(
-        label="amount to divide up",
         validators=[validators.InputRequired(), check_positive])
     partitions = IntegerField(
-        label="number of partitions",
         validators=[validators.InputRequired(), check_positive, check_zero])
 
 
