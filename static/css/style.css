@@ -114,13 +114,13 @@ html, body {
     color: red;
     list-style: none;
 }
-.form-holder .btn {
-    background: transparent;
-    border: solid 2px;
-    border-radius: 0%;
-    left: 40px;
-    width: 100px;
-}
+/*.form-holder .btn {*/
+/*    background: transparent;*/
+/*    border: solid 2px;*/
+/*    border-radius: 0%;*/
+/*    left: 40px;*/
+/*    width: 100px;*/
+/*}*/
 .form-holder .btn:hover {
     cursor: pointer;
     opacity: 50%;
