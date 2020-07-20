@@ -15,47 +15,50 @@
         gtag('config', 'UA-141921777-1');
     </script>
     <meta charset="UTF-8">
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0" />-->
+    <!--    <meta name="viewport" content="width=device-width, initial-scale=1.0" />-->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <link href="../static/bootstrap.min.css" rel="stylesheet" media="screen">
     <title>Amount Divider</title>
 </head>
 <body>
-<div class="form-holder">
-    <h1>Amount Divider</h1>
-    <p>This simple application solves a problem we sometimes encounter. You have an amount that you want to divide into
-        n partitions of decreasing size. Maybe for competition prizes or portion allocation. Whatever the reason, this
-        app gives you rough estimates where you can then make a decision from. Simply enter the amount and the number of
-        partitions you want and click divide!</p>
-    <div class="contents-center">
-        <form class="form-container" method=post action="">
-        <table class="elements">
-            {% for field in form %}
-            <tr>
-                <td class="lab">{{ field.name }}</td>
-                <td>{{ field }}</td>
-                <td>
-                    <ul class="errors">
-                        {% for error in field.errors %}
-                            <li>{{ error }}</li>
+    <div class="bg">
+        <div class="form-holder">
+            <h1>Amount Divider</h1>
+            <p>This simple application solves a problem we sometimes encounter. You have an amount that you want to divide into
+                n partitions of decreasing size. Maybe for competition prizes or portion allocation. Whatever the reason, this
+                app gives you rough estimates where you can then make a decision from. Simply enter the amount and the number of
+                partitions you want and click divide!</p>
+            <div class="contents-center">
+                <form class="form-container" method=post action="">
+                    <table class="elements">
+                        {% for field in form %}
+                        <tr>
+                            <td class="lab">{{ field.name }}</td>
+                            <td>{{ field }}</td>
+                            <td>
+                                <ul class="errors">
+                                    {% for error in field.errors %}
+                                    <li>{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </td>
+                        </tr>
                         {% endfor %}
-                    </ul>
-                </td>
-            </tr>
-            {% endfor %}
-        </table>
+                    </table>
 
-        <p><input class="custom-btn" type=submit value=Divide></form></p>
+                    <p><input class="custom-btn" type=submit value=Divide></form>
+                </p>
 
-        <p class="output-container">
-            {% if result != None %}
-            <textarea readonly class="output-field">{{ result }}</textarea>
-            {% endif %}
-        </p>
+                <p class="output-container">
+                    {% if result != None %}
+                    <textarea readonly class="output-field">{{ result }}</textarea>
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+
     </div>
-
-</div>
 
 </body>
 </html>
