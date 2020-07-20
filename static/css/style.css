@@ -58,10 +58,14 @@ p {
     color: var(--text-light);
 }
 
+html {
+
+}
+
 html, body {
     margin: 0;
     padding: 0;
-    height: 100%;
+    background: url("../bg.png");
 
     /*      Theme colors        */
     --text-gray: #3f4954;
@@ -76,12 +80,6 @@ html, body {
     --Josefin: 'Josefin', sans-serif;
     --Lexend: 'Lexend', sans-serif;
     --Livvic: 'Livvic', sans-serif;
-}
-
-.bg {
-    background: url("../bg.png") no-repeat center;
-    background-size: cover;
-    height: 100%;
 }
 
 .form-holder {
