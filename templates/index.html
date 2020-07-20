@@ -15,9 +15,10 @@
         gtag('config', 'UA-141921777-1');
     </script>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=0.7" />
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0" />-->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link href="../static/bootstrap.min.css" rel="stylesheet" media="screen">
     <title>Amount Divider</title>
 </head>
 <body>
@@ -45,7 +46,7 @@
             {% endfor %}
         </table>
 
-        <p><input class="btn" type=submit value=Divide></form></p>
+        <p><input class="custom-btn" type=submit value=Divide></form></p>
 
         <p class="output-container">
             {% if result != None %}
