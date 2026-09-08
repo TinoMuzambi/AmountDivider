@@ -1,4 +1,32 @@
-#Amount Divider
-http://amount-divider.tinomuzambi.com
+# Amount Divider
 
-This simple applications solves a problem we sometimes encounter. You have an amount that you want to divide into n partitions of decreasing size. Maybe for competition prizes or portion allocation. Whatever the reason, this app gives you rough estimates where you can then make a decision from. Simply enter the amount and the number of partitions you want and click divide.
+A small Flask application that splits an amount into decreasing partitions while preserving the original total. It is useful for prize pools, allocations, and other weighted distributions.
+
+## Run locally
+
+Requires Python 3.10 or newer.
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt -r requirements-dev.txt
+flask --app app run --debug
+```
+
+Open `http://127.0.0.1:5000` and enter a positive amount and between 1 and 1,000 partitions.
+
+## Test
+
+```bash
+pytest
+```
+
+## Deploy
+
+The included `Procfile` starts the application with Gunicorn:
+
+```bash
+gunicorn app:app
+```
+
+Set the platform runtime to Python 3.12 or another currently supported Python 3 release.
