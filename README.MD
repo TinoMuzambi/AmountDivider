@@ -2,6 +2,8 @@
 
 A small Flask application that splits an amount into decreasing partitions while preserving the original total. It is useful for prize pools, allocations, and other weighted distributions.
 
+[Use the live application](https://amount-divider.vercel.app/)
+
 ## Run locally
 
 Requires Python 3.10 or newer.
